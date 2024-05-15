@@ -114,7 +114,7 @@ class _UserFormState extends State<UserForm> {
               TextButton.icon(
                 label: const Text("Add User"),
                 icon: const Icon(Icons.add),
-                onPressed: () => _addUser,
+                onPressed: _addUser,
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
                         const Color.fromARGB(255, 35, 172, 40)),
