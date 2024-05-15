@@ -16,8 +16,7 @@ class _UserListState extends State<UserList> {
   final TextEditingController tituloController = TextEditingController();
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController lastnameController = TextEditingController();
-  final TextEditingController emailController =
-      TextEditingController(); // Added for email
+  final TextEditingController emailController = TextEditingController(); // Added for email
   final TextEditingController pictureController = TextEditingController();
 
   @override
@@ -26,15 +25,16 @@ class _UserListState extends State<UserList> {
     futureUsers = userService.getUsers();
   }
 
+//Config dos botões de Edit e Delete
   Widget _buildEditAndDeleteButtons(User user) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: Wrap(
         spacing: 50,
         children: <Widget>[
           TextButton.icon(
-            label: Text("Edit"),
-            icon: Icon(Icons.edit),
+            label: const Text("Edit"),
+            icon: const Icon(Icons.edit),
             onPressed: () => {
               _showEditDialog(user),
             },
@@ -42,25 +42,26 @@ class _UserListState extends State<UserList> {
                 backgroundColor: MaterialStateProperty.all(
                     const Color.fromARGB(255, 35, 172, 40)),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
-                fixedSize: MaterialStateProperty.all(Size(100, 10))),
+                fixedSize: MaterialStateProperty.all(const Size(100, 10))),
           ),
           TextButton.icon(
-            label: Text("Delete"),
-            icon: Icon(Icons.delete),
+            label: const Text("Delete"),
+            icon: const Icon(Icons.delete),
             onPressed: () => {
               _deleteUser(user.id!),
             },
             style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Color.fromARGB(255, 201, 32, 32)),
+                backgroundColor: MaterialStateProperty.all(
+                    const Color.fromARGB(255, 201, 32, 32)),
                 foregroundColor: MaterialStateProperty.all(Colors.white),
-                fixedSize: MaterialStateProperty.all(Size(100, 10))),
+                fixedSize: MaterialStateProperty.all(const Size(100, 10))),
           ),
         ],
       ),
     );
   }
 
+//Funções e Pop-up's
   void _showEditDialog(User user) {
     tituloController.text = user.title!;
     firstnameController.text = user.firstName;
@@ -72,29 +73,29 @@ class _UserListState extends State<UserList> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text("Edit User"),
+        title: const Text("Edit User"),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextFormField(
                   controller: tituloController,
-                  decoration: InputDecoration(labelText: 'Title')),
+                  decoration: const InputDecoration(labelText: 'Title')),
               TextFormField(
                   controller: firstnameController,
-                  decoration: InputDecoration(labelText: 'First Name')),
+                  decoration: const InputDecoration(labelText: 'First Name')),
               TextFormField(
                   controller: lastnameController,
-                  decoration: InputDecoration(labelText: 'Last Name')),
+                  decoration: const InputDecoration(labelText: 'Last Name')),
               TextFormField(
                   controller: pictureController,
-                  decoration: InputDecoration(labelText: 'Picture URL')),
+                  decoration: const InputDecoration(labelText: 'Picture URL')),
             ],
           ),
         ),
         actions: <Widget>[
           TextButton(
-            child: Text("Update"),
+            child: const Text("Update"),
             onPressed: () {
               Navigator.of(context).pop();
               _updateUser(user);
@@ -147,14 +148,15 @@ class _UserListState extends State<UserList> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
+//Página inicial (Lista de usuários)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 27, 76, 119),
+      backgroundColor: const Color.fromARGB(255, 46, 125, 194),
       appBar: AppBar(
-        title: Text("List of Users"),
+        title: const Text("List of Users"),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 27, 76, 119),
+        backgroundColor: const Color.fromARGB(255, 46, 125, 194),
       ),
       body: Column(
         children: [
@@ -186,7 +188,7 @@ class _UserListState extends State<UserList> {
                     },
                   );
                 } else {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
               },
             ),

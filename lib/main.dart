@@ -13,14 +13,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter User API Demo',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(foregroundColor: Colors.white),
+        appBarTheme: const AppBarTheme(foregroundColor: Colors.white),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
 
+//BottomNavigatonBar
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -40,11 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _getBodyWidget() {
     switch (_selectedIndex) {
       case 0:
-        return UserList();
+        return const UserList();
       case 1:
-        return UserForm();
+        return const UserForm();
       default:
-        return UserList();
+        return const UserList();
     }
   }
 
@@ -57,9 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: _getBodyWidget(),
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 27, 76, 119),
+      backgroundColor: const Color.fromARGB(255, 46, 125, 194),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor:Color.fromARGB(255, 51, 142, 221),
+        backgroundColor: Color.fromARGB(255, 33, 89, 138),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_long_rounded),
